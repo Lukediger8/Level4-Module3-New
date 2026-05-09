@@ -22,9 +22,23 @@ public class SpiesOnATrain {
      * statements.
      */
     String findIntel(LinkedList<TrainCar> train, String[] clues) {
+    	for(int i = 0; i < clues.length; i++) {
+    		System.out.println(clues[i]);
+    	}
+    	HashMap <String, Integer> hash = new HashMap();
+    	Node <TrainCar >head = train.getHead();
+    	while(head != null){
+    		System.out.println(head.getValue().questionPassenger());
+    		head = head.getNext();
+    		
+    	}
 
         return "";
 
     }
 
 }
+// Possibly useful String functions:
+//   .split
+//   .endsWith
+//   .indexOf

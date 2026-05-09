@@ -3,7 +3,20 @@ package _00_Intro_to_Linked_Lists;
 public class LinkedListDemo {
 
     public static void main(String[] args) {
-
+        LinkedList<String> list = new LinkedList<>();
+       
+        list.add("Google");
+        list.add("Microsoft Edge");
+        list.add("Firefox");
+        list.remove(0);
+        Node <String> head = list.getHead();
+        list.print();
+        while(head != null) {
+        	System.out.println("worked");
+        	System.out.println(head.getValue().toUpperCase());
+        	head = head.getNext();
+        }
+        	
         /*
          * A LinkedList is a linear data structure, but unlike an ArrayList or
          * Array the data is not stored in contiguous memory locations.
