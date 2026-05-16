@@ -29,11 +29,38 @@ public class SpiesOnATrain {
     	Node <TrainCar >head = train.getHead();
     	while(head != null){
     		System.out.println(head.getValue().questionPassenger());
+    		String info = head.getValue().questionPassenger();
+    		String s = info;
+    		int num = 0;
+        	for(int i = 0; i < clues.length; i++) {
+    		if(info.contains(clues[i])) {
+    			System.out.println("bruh");
+    			s = s.substring(0, s.indexOf(clues[i]));
+    			String sList[] = s.split(" ");
+    			s = sList[sList.length-1];
+    			if (!hash.containsKey(s)) {
+    				hash.put(s, 1);
+    			}else {
+    				int temp = hash.get(s);
+    				hash.put(s, temp+1);
+    			}
+
+    		}
+        	}
+        	
     		head = head.getNext();
     		
     	}
+    		String maxKey = "";
+    		int i = -10000000;
+    		for(String a : hash.keySet()) {
+    			if(hash.get(a)> i){
+    				i = hash.get(a);
+    				maxKey = a;
+    			}
+    		}
 
-        return "";
+        return maxKey;
 
     }
 
