@@ -23,7 +23,7 @@ public class RainbowZombieCongaLine {
 
     private LinkedList<Zombie> congaLine;
     private ZombieHatColor[] zombieHats;
-
+    Node<Zombie> newHead;
     public RainbowZombieCongaLine() {
 
         congaLine = new LinkedList<Zombie>();
@@ -33,17 +33,51 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the first Zombie in the conga line!
     public void engine(Zombie dancer) {
-
+    	newHead = new Node<Zombie>(dancer);
+    	Node<Zombie> oldHead = congaLine.getHead();
+    	if(oldHead != null) {
+    	newHead.setNext(oldHead);
+    	oldHead.setPrev(newHead);
+    	congaLine.setHead(newHead);
+    	}
+    	else {
+    		congaLine.add(dancer);
+    	}
     }
 
     // Make the passed in zombie the last Zombie in the conga line!
     public void caboose(Zombie dancer) {
-
+    	Node<Zombie> newTail = new Node<Zombie>(dancer);
+    	Node<Zombie> oldTail = congaLine.getTail();
+    	if(oldTail != null) {
+    	congaLine.setTail(newTail);
+    	newTail.setPrev(oldTail);
+    	oldTail.setNext(newTail);
+    	}
+    	else {
+    		congaLine.add(dancer);
+    	}
+    	
     }
 
     // Place the zombie at the designated position in the conga line!
     public void jumpInTheLine(Zombie dancer, int position) {
+    	Node<Zombie> newNode = new Node<Zombie>(dancer);
+    	int num = 0;
+    	Node<Zombie> current = congaLine.getHead();
+    	while(num < position) {
+    		current = current.getNext();
+    		num++;
+    		}
+    	
+    	newNode.setNext(current);
+    	current.getPrev().setNext(newNode);
+    	if(position > 0) {
+    		newNode.setPrev(current.getPrev());
+        	current.setPrev(newNode);
 
+    	}
+    	
     }
 
     /*
