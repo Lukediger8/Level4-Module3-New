@@ -24,6 +24,7 @@ public class RainbowZombieCongaLine {
     private LinkedList<Zombie> congaLine;
     private ZombieHatColor[] zombieHats;
     Node<Zombie> newHead;
+    Node<Zombie> hatZomb;
     public RainbowZombieCongaLine() {
 
         congaLine = new LinkedList<Zombie>();
@@ -85,15 +86,51 @@ public class RainbowZombieCongaLine {
      * the conga line!
      */
     public void everyoneOut(Zombie dancer) {
-
+    	Node<Zombie> current = congaLine.getHead();
+    	int position = 0;
+    	while(current != null) {
+    		if(current.getValue().getZombieHatColor() == dancer.getZombieHatColor()) {
+    			congaLine.remove(position);
+    			current = congaLine.getHead();
+    			position = 0;
+                
+    			
+    		}
+    		else {
+    			current = current.getNext();
+    			position++;
+    		}
+	    	
+    	}
+    	
     }
+    
+
+    	
+    
 
     /*
      * Remove the first zombie with the same hat color as the passed in zombie
      * from the conga line!
      */
     public void youAreDone(Zombie dancer) {
-
+    	Node<Zombie> current = congaLine.getHead();
+    	int position = 0;
+    	while(current != null) {
+    		if(current.getValue().getZombieHatColor() == dancer.getZombieHatColor()) {
+    			congaLine.remove(position);
+    			current = congaLine.getHead();
+    			position = 0;
+                return;
+    			
+    		}
+    		else {
+    			current = current.getNext();
+    			position++;
+    		}
+	    	
+    	}
+    	
     }
 
     /*
@@ -101,7 +138,7 @@ public class RainbowZombieCongaLine {
      * add one to the front, one to the end and one in the middle.
      */
     public void brains(Zombie dancer) {
-
+    	Node<Zombie> front
     }
 
     /*
