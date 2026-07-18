@@ -40,6 +40,7 @@ public class RainbowZombieDanceParty {
             System.out.print("Type your action choice: ");
             String userInput = sc.nextLine().toUpperCase().trim();
 
+           
             // 3. Match user string input to your ZombieAction enum
             ZombieAction actionToPerform = null;
             for (ZombieAction za : zombieActions) {

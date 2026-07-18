@@ -74,10 +74,9 @@ public class RainbowZombieCongaLine {
     	newNode.setNext(current);
     	current.getPrev().setNext(newNode);
     	if(position > 0) {
-    		newNode.setPrev(current.getPrev());
-        	current.setPrev(newNode);
-
+    		newNode.setPrev(current.getPrev()); 
     	}
+    	current.setPrev(newNode);
     	
     }
 

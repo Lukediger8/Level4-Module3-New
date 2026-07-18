@@ -1,10 +1,11 @@
 package _04_Morse_Code;
 
 import _03_Intro_to_Binary_Trees.BinaryTree;
+import _03_Intro_to_Binary_Trees.Node;
 
 public class MorseDecoder {
 
-    BinaryTree<MorseCode> mcTree = new BinaryTree<MorseCode>();
+	BinaryTree<MorseCode> mcTree = new BinaryTree<MorseCode>();
 
     public static void main(String[] args) {
 
@@ -65,6 +66,26 @@ public class MorseDecoder {
      */
     void decode() {
         String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
-    }
+        morseCode.split(" ");
+    	Node<MorseCode> root = mcTree.getRoot(); 
+    	for(String code_string: morseCode.split(" ")) {
+    		MorseCode code = new MorseCode(code_string);
+    		System.out.print(letter(root,code) +" ");
+    	}
 
+    }
+    public String letter(Node<MorseCode> node,MorseCode morse) {
+		int value = morse.compareTo(node.getValue());
+    	if(value == 0) {
+    		return node.getValue().getDecoded();
+    		
+    	}
+    	else if(value == 1) {
+    		return letter(node.getRight(), morse);
+    	}
+    	else if(value == -1) {
+    		return letter(node.getLeft(),morse);
+    	}
+		return null;
+    }
 }

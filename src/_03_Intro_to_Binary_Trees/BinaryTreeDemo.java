@@ -22,6 +22,8 @@ public class BinaryTreeDemo {
      * 
      * 2. Create a BinaryTree of any type you like.
      * 
+     
+     * 
      * 3. Try using some BinaryTree methods to insert, search for, delete and
      * print elements.
      * 
@@ -33,7 +35,36 @@ public class BinaryTreeDemo {
      */
 
     public static void main(String[] args) {
+    	BinaryTree<Integer> tree = new BinaryTree<Integer>();
+    	tree.insert(24);
+    	tree.insert(21);
+    	tree.insert(21);
+    	tree.insert(21);
+    	tree.insert(21);
+    	tree.insert(21);
+    	tree.insert(21);
 
+    	tree.insert(67);
+    	tree.search(67);
+    	tree.delete(21);
+    	tree.printVertical();
+    	Node<Integer> root = tree.getRoot();
+    	traverse(root);
+    	
     }
+    
+    static void traverse(Node <Integer> node){
+    	System.out.println("lol");
+		if(node.getLeft() != null) {
+			traverse(node.getLeft());
+		}
+		if(node.getRight() != null) {
+			traverse(node.getRight());
+		}
+	}
+
 
 }
+
+
+		
